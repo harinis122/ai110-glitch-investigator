@@ -8,6 +8,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
+1. Go higher/lower hints are swapped: When "Show hint" is checked and I guess a number that is too low, a "Go LOWER!" hint is given. When I guess a number that is too high, a "Go HIGHER!" hint is given. However, I expected the "Go LOWER!" hint to be given when my number is too high and the "Go HIGHER!" hint to be given when my number is too low.
+2. "New Game" button does nothing: When I click the "New Game" button, nothing happens. However, I expected this to start a new game (reset existing guess history, attempts, and score, and change secret number).
+3. Out of bound inputs are allowed: When I input a number which is outside the given range of numbers, (such as a number less than 1 or greater than 100), the number still goes through and I do not get informed that my number is out of bounds. However, I expected to be notified if my number is out of bounds and not have that number count towards my allotted guess attempts.
+
+
+
+
 ---
 
 ## 2. How did you use AI as a teammate?
