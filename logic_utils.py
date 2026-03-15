@@ -1,6 +1,23 @@
+import random
+
+
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+
+
+def reset_game_state(state, low: int, high: int):
+    """Reset a Streamlit session state to start a new game.
+
+    This is used by the New Game button and is kept as a pure helper so it can be
+    unit tested without running Streamlit.
+    """
+
+    state["attempts"] = 1
+    state["secret"] = random.randint(low, high)
+    state["status"] = "playing"
+    state["history"] = []
+    state["score"] = 0
 
 
 def parse_guess(raw: str):

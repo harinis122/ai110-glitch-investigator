@@ -1,4 +1,5 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, reset_game_state
+
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -17,3 +18,25 @@ def test_guess_too_low():
     outcome, message = check_guess(40, 50)
     assert outcome == "Too Low"
     assert message == "📈 Go HIGHER!"
+
+
+def test_reset_game_state(monkeypatch):
+    # Ensure reset_game_state sets all expected fields and uses the provided bounds.
+    state = {
+        "attempts": 99,
+        "secret": 999,
+        "status": "won",
+        "history": [1, 2, 3],
+        "score": 123,
+    }
+
+    # Force deterministic secret generation
+    monkeypatch.setattr("random.randint", lambda low, high: 42)
+
+    reset_game_state(state, low=1, high=10)
+
+    assert state["attempts"] == 1
+    assert state["secret"] == 42
+    assert state["status"] == "playing"
+    assert state["history"] == []
+    assert state["score"] == 0
