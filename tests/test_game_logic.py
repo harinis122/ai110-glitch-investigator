@@ -1,4 +1,4 @@
-from logic_utils import check_guess, reset_game_state
+from logic_utils import check_guess, reset_game_state, validate_guess
 
 
 def test_winning_guess():
@@ -18,6 +18,20 @@ def test_guess_too_low():
     outcome, message = check_guess(40, 50)
     assert outcome == "Too Low"
     assert message == "📈 Go HIGHER!"
+
+
+def test_validate_guess_out_of_bounds_low():
+    ok, guess, err = validate_guess("0", 1, 100)
+    assert not ok
+    assert guess == 0
+    assert "between 1 and 100" in err
+
+
+def test_validate_guess_out_of_bounds_high():
+    ok, guess, err = validate_guess("101", 1, 100)
+    assert not ok
+    assert guess == 101
+    assert "between 1 and 100" in err
 
 
 def test_reset_game_state(monkeypatch):

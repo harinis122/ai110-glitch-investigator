@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import check_guess, reset_game_state
+from logic_utils import check_guess, reset_game_state, validate_guess
 
 
 def get_range_for_difficulty(difficulty: str):
@@ -91,7 +91,7 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -129,14 +129,14 @@ if st.session_state.status != "playing":
     st.stop()
 
 if submit:
-    st.session_state.attempts += 1
-
-    ok, guess_int, err = parse_guess(raw_guess)
+    ok, guess_int, err = validate_guess(raw_guess, low, high)
 
     if not ok:
-        st.session_state.history.append(raw_guess)
+        # Don't count invalid or out-of-bounds guesses toward the attempt count.
+        st.session_state.history.append(guess_int if guess_int is not None else raw_guess)
         st.error(err)
     else:
+        st.session_state.attempts += 1
         st.session_state.history.append(guess_int)
 
         if st.session_state.attempts % 2 == 0:
