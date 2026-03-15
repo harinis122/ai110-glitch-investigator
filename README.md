@@ -24,14 +24,15 @@ It wrote the code, ran away, and now the game is unplayable.
    - Keep fixing until all tests pass!
 
 ## 📝 Document Your Experience
+This game's purpose is to entertain the user. With three difficulty levels, the game gives the user a specific number of attempts to guess a secret number, and the user can choose to display hints or not.
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+I found three main bugs. The first bug was that the "Go higher" and "Go lower" hint messages were swapped. The second but was that the "New Game" button did not work, meaning that there was no way for the user to reset the game. The final bug was that the user could enter guesses out of the allowed range (there was no input validation).
+
+I fixed the game by swapping when the "Go higher" and "Go lower" hint messages were displayed and resetting the game state (guess history, attempts, secret number, etc) when the "New Game" button is clicked. I also added an error message when the user inputs an out-of-bound guess. Additionally, I refactored some logic code from app.py to logic_utils.py. I used Copilot as an assistent.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [ ] ![alt text](image-1.png)
 
 ## 🚀 Stretch Features
 
