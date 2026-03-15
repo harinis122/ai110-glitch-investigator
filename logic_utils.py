@@ -11,7 +11,7 @@ def get_range_for_difficulty(difficulty: str):
         return 1, 50
     return 1, 100
 
-
+# FIX: Refactored logic into logic_utils.py and fixed bug where "New Game" did not reset the game state using Copilot Agent mode
 def reset_game_state(state, low: int, high: int):
     """Reset a Streamlit session state to start a new game.
 
@@ -48,7 +48,7 @@ def parse_guess(raw: str):
 
     return True, value, None
 
-
+# FIX: Refactored logic into logic_utils.py and fixed bug where user could enter out-of-bounds guesses that were accepted by the game using Copilot Agent mode
 def validate_guess(raw: str, low: int, high: int):
     """Validate user guess input and enforce range bounds.
 
