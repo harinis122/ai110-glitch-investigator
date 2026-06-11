@@ -7,6 +7,7 @@ def test_winning_guess():
     assert outcome == "Win"
     assert message == "🎉 Correct!"
 
+# test cases for too high/too low bugs that were fixed
 def test_guess_too_high():
     # If secret is 50 and guess is 60, hint should be "Too High"
     outcome, message = check_guess(60, 50)
@@ -33,7 +34,7 @@ def test_validate_guess_out_of_bounds_high():
     assert guess == 101
     assert "between 1 and 100" in err
 
-
+# test case for game reset bug that was fixed
 def test_reset_game_state(monkeypatch):
     # Ensure reset_game_state sets all expected fields and uses the provided bounds.
     state = {
