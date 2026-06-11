@@ -37,3 +37,11 @@ I fixed the game by swapping when the "Go higher" and "Go lower" hint messages w
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+
+
+
+## Four Main Bugs:
+1. Go higher/go lower messages are reversed
+2. New game button does not work
+3. No input validation (can guess numbers outside range)
+4. Range mismatch (for hard and easy levels) between left hand side and center
