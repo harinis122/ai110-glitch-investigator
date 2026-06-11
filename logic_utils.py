@@ -21,9 +21,9 @@ def reset_game_state(state, low: int, high: int):
 
     state["attempts"] = 1
     state["secret"] = random.randint(low, high)
-    state["status"] = "playing"
-    state["history"] = []
-    state["score"] = 0
+    state["status"] = "playing" # reset to "playing" status
+    state["history"] = [] # reset history of guesses
+    state["score"] = 0 # reset score to 0
 
 
 def parse_guess(raw: str):
@@ -75,7 +75,7 @@ def check_guess(guess, secret):
 
     try:
         # FIX: Refactored logic into logic_utils.py and fixed bug where "Go HIGHER!" and "Go LOWER!" hints were reversed using Copilot Agent mode
-        if guess > secret:
+        if guess > secret: # reversed sign here to fix bug where hints were reversed
             return "Too High", "📉 Go LOWER!"
         else:
             return "Too Low", "📈 Go HIGHER!"

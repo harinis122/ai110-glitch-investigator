@@ -117,7 +117,7 @@ with col3:
 
 if new_game:
     # Reset the game state so the app actually lets you play again.
-    reset_game_state(st.session_state, low, high)
+    reset_game_state(st.session_state, low, high) # fixed bug where "New Game" did not reset the game state by resetting the status, history, and score
     st.success("New game started.")
     st.rerun()
 
