@@ -116,6 +116,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # hint: is there anything else we need to reset besides the secret number and attempts count to actually let the user play a new game?
     # Reset the game state so the app actually lets you play again.
     reset_game_state(st.session_state, low, high) # fixed bug where "New Game" did not reset the game state by resetting the status, history, and score
     st.success("New game started.")

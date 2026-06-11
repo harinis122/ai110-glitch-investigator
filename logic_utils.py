@@ -74,6 +74,7 @@ def check_guess(guess, secret):
         return "Win", "🎉 Correct!"
 
     try:
+        # hint: does this look correct or should it be reversed? test cases should help confirm if the hints are correct for too high vs too low.
         # FIX: Refactored logic into logic_utils.py and fixed bug where "Go HIGHER!" and "Go LOWER!" hints were reversed using Copilot Agent mode
         if guess > secret: # reversed sign here to fix bug where hints were reversed
             return "Too High", "📉 Go LOWER!"
